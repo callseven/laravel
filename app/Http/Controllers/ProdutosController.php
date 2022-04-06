@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use App\Models\produto;
+
+
 
 class ProdutosController extends Controller
 {
     public function index() {
-        $produtos = produto::all();
-        // return $produtos;
+        $produtos = produto::paginate(14);
         return view('produtos.index', ['produtos' => $produtos]);
     }
 
